@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "52fe84af-d725-4f56-8869-e05859cb0596",
+		"name": "Vector Search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8198121"
+	},
+	"item": [
+		{
+			"name": "Add docs",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \n  \"id\": \"3\",               \n  \"tag\":\"ST\",\n  \"content\": \"Cat is eating\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5007/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5007",
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\":\"animal\",\n    \"tag\": \"ST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5007/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5007",
+					"path": [
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

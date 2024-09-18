@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  redis:
+    image: redis/redis-stack-server:7.2.0-v6
+    container_name: redis_vector_db
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - redisnet
+
+  app:
+    build: ./app
+    container_name: sems_app
+    ports:
+      - "5007:5007"
+    depends_on:
+      - redis
+    networks:
+      - redisnet
+
+volumes:
+  redis-data:
+    driver: local
+
+networks:
+  redisnet:
+    driver: bridge

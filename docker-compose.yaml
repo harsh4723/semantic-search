@@ -19,6 +19,14 @@ services:
       - redis
     networks:
       - redisnet
+  
+  tika:
+    image: apache/tika:latest
+    container_name: tika-server
+    ports:
+      - "9998:9998"
+    networks:
+      - redisnet
 
 volumes:
   redis-data:

@@ -10,15 +10,26 @@ services:
     networks:
       - redisnet
 
-  app:
-    build: ./app
-    container_name: sems_app
+  indexapp:
+    build: ./index
+    container_name: index_app
     environment:
       TIKA_CLIENT_ONLY: True
       TIKA_SERVER_ENDPOINT: http://tika:9998
       PYTHONIOENCODING: utf8
     ports:
       - "5007:5007"
+    depends_on:
+      - redis
+      - tika
+    networks:
+      - redisnet
+  
+  searchapp:
+    build: ./search
+    container_name: search_app
+    ports:
+      - "5008:5008"
     depends_on:
       - redis
     networks:

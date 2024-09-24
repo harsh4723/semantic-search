@@ -1,6 +1,5 @@
 """Router file"""
 import struct
-import io
 
 import numpy as np
 import redis
